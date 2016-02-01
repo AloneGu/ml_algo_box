@@ -6,6 +6,7 @@ neigh.fit(X, y)
 print(neigh.predict([[1.1]]))
 print(neigh.predict_proba([[0.9]]))
 
+
 from util import get_x_y_data
 
 TEST_DATA_ROWS = 20
