@@ -1,5 +1,6 @@
 from sklearn import svm
 
+
 def simple_example():
     X = [[0, 0], [1, 1]]
     y = [0, 1]
@@ -17,4 +18,3 @@ def simple_example():
 
 
 simple_example()
-
