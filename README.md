@@ -13,3 +13,7 @@ Some examples of classic machine learning algorithm
 # Environment
 Test on Ubuntu 14
 
+# Example to benchmark some classifiers
+
+        python classifier_benchmark.py
+
