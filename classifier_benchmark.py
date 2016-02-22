@@ -25,25 +25,28 @@ class classifier_test(object):
         print 'dct test, depth', self.dct_depth
         start_time = time.time()
         dct_clf = DecisionTreeClassifier(max_depth=self.dct_depth)
-        print cross_val_score(dct_clf, self.x_data, self.y_data)
+        print 'cross validation score',cross_val_score(dct_clf, self.x_data, self.y_data)
         dct_clf.fit(self.x_data, self.y_data)
-        print dct_clf.score(self.x_test, self.y_test), 'time cost', time.time() - start_time
+        print 'score',dct_clf.score(self.x_test, self.y_test)
+        print 'time cost', time.time() - start_time
 
     def knn_test(self):
         print 'knn test, n count', self.n_neighbores
         start_time = time.time()
         knn_clf = KNeighborsClassifier(n_neighbors=self.n_neighbores)
-        print cross_val_score(knn_clf, self.x_data, self.y_data)
+        print 'cross validation score',cross_val_score(knn_clf, self.x_data, self.y_data)
         knn_clf.fit(self.x_data, self.y_data)
-        print knn_clf.score(self.x_test, self.y_test), 'time cost', time.time() - start_time
+        print 'score',knn_clf.score(self.x_test, self.y_test)
+        print 'time cost', time.time() - start_time
 
     def svm_test(self):
         print 'svm test'
         start_time = time.time()
         svm_clf = svm.SVC()
-        print cross_val_score(svm_clf, self.x_data, self.y_data)
+        print 'cross validation score',cross_val_score(svm_clf, self.x_data, self.y_data)
         svm_clf.fit(self.x_data, self.y_data)
-        print svm_clf.score(self.x_test, self.y_test), 'time cost', time.time() - start_time
+        print 'score',svm_clf.score(self.x_test, self.y_test)
+        print 'time cost', time.time() - start_time
 
 
 def get_wifi_x_y_data():
