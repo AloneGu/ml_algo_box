@@ -1,6 +1,7 @@
 from sklearn.cross_validation import cross_val_score, train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
 from sklearn import svm
 import time
 import numpy as np
@@ -19,6 +20,7 @@ class classifier_test(object):
         self.dct_test()
         self.knn_test()
         self.svm_test()
+        self.gaussian_bayes_test()
         print '-----------------------'
 
     def dct_test(self):
@@ -47,6 +49,16 @@ class classifier_test(object):
         svm_clf.fit(self.x_data, self.y_data)
         print 'score',svm_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
+
+    def gaussian_bayes_test(self):
+        print 'gaussian bayes test'
+        start_time = time.time()
+        g_bayes_clf = GaussianNB()
+        print 'cross validation score',cross_val_score(g_bayes_clf, self.x_data, self.y_data)
+        g_bayes_clf.fit(self.x_data, self.y_data)
+        print 'score',g_bayes_clf.score(self.x_test, self.y_test)
+        print 'time cost', time.time() - start_time
+
 
 
 def get_wifi_x_y_data():
@@ -106,9 +118,9 @@ def get_class_x_y_data():
 
 
 if __name__ == '__main__':
-    wifi_x, wifi_y, neighbor_num, _ = get_wifi_x_y_data()
-    t = classifier_test(wifi_x, wifi_y, neighbor_num)
-    t.run()
+    #wifi_x, wifi_y, neighbor_num, _ = get_wifi_x_y_data()
+    #t = classifier_test(wifi_x, wifi_y, neighbor_num)
+    #t.run()
     wifi_class_x, wifi_class_y, neighbor_num = get_class_x_y_data()
     t = classifier_test(wifi_class_x, wifi_class_y, neighbor_num)
     t.run()
