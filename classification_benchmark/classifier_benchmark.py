@@ -64,7 +64,7 @@ class classifier_test(object):
 def get_wifi_x_y_data():
     bssid_cnt = {}
     place_set = set()
-    f = open('wifi_data.txt')
+    f = open('../data/wifi_data.txt')
     content = f.readlines()
     x_data, y_data = [], []
     zone_int_dict = {}
@@ -106,7 +106,7 @@ def get_wifi_x_y_data():
 
 def get_class_x_y_data():
     import csv
-    f = open('55_2015-11-12.csv')
+    f = open('../data/55_2015-11-12.csv')
     csv_reader = csv.reader(f)
     x_data, y_data, y_set = [], [], set()
     for row in csv_reader:

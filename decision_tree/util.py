@@ -1,6 +1,6 @@
 import numpy as np
 
-TRAINING_DATA = '../wifi_data.txt'
+TRAINING_DATA = '../data/wifi_data.txt'
 
 
 def get_x_y_data():

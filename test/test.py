@@ -6,7 +6,7 @@ for r in c:
 
 def get_class_x_y_data():
     import csv
-    f = open('55_2015-11-12.csv')
+    f = open('../data/55_2015-11-12.csv')
     csv_reader = csv.reader(f)
     x_data, y_data, y_set = [], [], set()
     for row in csv_reader:
