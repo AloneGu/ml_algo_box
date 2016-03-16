@@ -1,8 +1,12 @@
 from sklearn.cross_validation import cross_val_score, train_test_split
+from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
 import time
 import numpy as np
 
@@ -70,21 +74,18 @@ class classifier_test(object):
 
     # Logistic Regression Classifier
     def logistic_regression_classifier(self):
-        from sklearn.linear_model import LogisticRegression
         model = LogisticRegression(penalty='l2')
         model.fit(self.x_data, self.y_data)
         print 'logistic cross validation score',cross_val_score(model, self.x_data, self.y_data)
 
     # Random Forest Classifier
     def random_forest_classifier(self):
-        from sklearn.ensemble import RandomForestClassifier
         model = RandomForestClassifier(n_estimators=8)
         model.fit(self.x_data, self.y_data)
         print 'random forest cross validation score',cross_val_score(model, self.x_data, self.y_data)
 
     # GBDT(Gradient Boosting Decision Tree) Classifier
     def gradient_boosting_classifier(self):
-        from sklearn.ensemble import GradientBoostingClassifier
         model = GradientBoostingClassifier(n_estimators=200)
         model.fit(self.x_data, self.y_data)
         print 'GBDT cross validation score',cross_val_score(model, self.x_data, self.y_data)
@@ -144,6 +145,18 @@ def get_class_x_y_data():
         y_data.append(tmp_y)
         y_set.add(tmp_y)
     return x_data, y_data, len(y_set)
+
+
+def get_mnist_data():
+    import gzip,pickle
+    f = gzip.open('../data/mnist.pkl.gz', "rb")
+    train, val, test = pickle.load(f)
+    f.close()
+    train_x = train[0]
+    train_y = train[1]
+    test_x = test[0]
+    test_y = test[1]
+    return train_x, train_y, test_x, test_y
 
 
 if __name__ == '__main__':
