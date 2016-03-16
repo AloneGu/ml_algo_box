@@ -18,9 +18,18 @@ class classifier_test(object):
 
     def run(self):
         self.dct_test()
+        print '-----------------------'
         self.knn_test()
+        print '-----------------------'
         self.svm_test()
+        print '-----------------------'
         self.gaussian_bayes_test()
+        print '-----------------------'
+        self.logistic_regression_classifier()
+        print '-----------------------'
+        self.random_forest_classifier()
+        print '-----------------------'
+        self.gradient_boosting_classifier()
         print '-----------------------'
 
     def dct_test(self):
@@ -59,6 +68,26 @@ class classifier_test(object):
         print 'score',g_bayes_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
 
+    # Logistic Regression Classifier
+    def logistic_regression_classifier(self):
+        from sklearn.linear_model import LogisticRegression
+        model = LogisticRegression(penalty='l2')
+        model.fit(self.x_data, self.y_data)
+        print 'logistic cross validation score',cross_val_score(model, self.x_data, self.y_data)
+
+    # Random Forest Classifier
+    def random_forest_classifier(self):
+        from sklearn.ensemble import RandomForestClassifier
+        model = RandomForestClassifier(n_estimators=8)
+        model.fit(self.x_data, self.y_data)
+        print 'random forest cross validation score',cross_val_score(model, self.x_data, self.y_data)
+
+    # GBDT(Gradient Boosting Decision Tree) Classifier
+    def gradient_boosting_classifier(self):
+        from sklearn.ensemble import GradientBoostingClassifier
+        model = GradientBoostingClassifier(n_estimators=200)
+        model.fit(self.x_data, self.y_data)
+        print 'GBDT cross validation score',cross_val_score(model, self.x_data, self.y_data)
 
 
 def get_wifi_x_y_data():
@@ -106,7 +135,7 @@ def get_wifi_x_y_data():
 
 def get_class_x_y_data():
     import csv
-    f = open('../data/55_2015-11-12.csv')
+    f = open('../data/108_wifi_training.csv')
     csv_reader = csv.reader(f)
     x_data, y_data, y_set = [], [], set()
     for row in csv_reader:
