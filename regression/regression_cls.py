@@ -9,9 +9,10 @@ def get_accuracy(a, b):
             tmp_err_rate = 0 if x == 0 else 1
         else:
             abs_diff = abs(x - y)
-            tmp_err_rate = abs_diff * 1.0 / y
+            tmp_err_rate = abs(abs_diff * 1.0 / y)
             tmp_err_rate = min(1.0, tmp_err_rate)
         tmp_acc_rate = 1 - tmp_err_rate
+        #print x,y,tmp_acc_rate
         acc_rate.append((tmp_acc_rate))
     return np.average(acc_rate)
 
