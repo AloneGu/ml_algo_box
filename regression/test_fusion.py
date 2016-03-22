@@ -12,8 +12,9 @@ def get_x_y_data(file_path):
             r = r.strip().split(',')
             #print r
             #tmp_x = [int(r[-2]),int(r[-1]),int(r[3])]
+            if int(r[-2])>15:
+                continue
             tmp_x = [int(r[-2]),int(r[-1])]
-            #tmp_x = [int(r[-2])]
             tmp_y = int(r[-3])
             x_data.append(tmp_x)
             y_data.append(tmp_y)
