@@ -10,8 +10,10 @@ def get_x_y_data(file_path):
         try:
             #print r
             r = r.strip().split(',')
-            print r
+            #print r
+            #tmp_x = [int(r[-2]),int(r[-1]),int(r[3])]
             tmp_x = [int(r[-2]),int(r[-1])]
+            #tmp_x = [int(r[-2])]
             tmp_y = int(r[-3])
             x_data.append(tmp_x)
             y_data.append(tmp_y)
@@ -23,6 +25,8 @@ def get_x_y_data(file_path):
 
 if __name__ == '__main__':
     import sys
+    if len(sys.argv)!=2:
+        print 'usage python test_fusion.py ../data/xx.txt'
     x, y = get_x_y_data(sys.argv[1])
 
     regression_worker = MyRegression(x, y)

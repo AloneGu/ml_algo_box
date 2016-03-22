@@ -136,7 +136,7 @@ def get_wifi_x_y_data():
 
 def get_class_x_y_data():
     import csv
-    f = open('../data/108_wifi_training.csv')
+    f = open('../data/120_wifi_training.csv')
     csv_reader = csv.reader(f)
     x_data, y_data, y_set = [], [], set()
     for row in csv_reader:
