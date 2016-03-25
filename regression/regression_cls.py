@@ -3,6 +3,7 @@ from sklearn.linear_model import LinearRegression, BayesianRidge, Ridge
 
 
 def get_accuracy(a, b):
+    # a is test, b is truth
     acc_rate = []
     for x, y in zip(a, b):
         if y == 0:
@@ -25,10 +26,10 @@ class MyRegression(object):
         print 'old accuracy', get_accuracy(self.v_data, self.y_data)
 
     def ols_linear_reg(self):
-        lr = LinearRegression()
-        lr.fit(self.x_data, self.y_data)
-        adjusted_result = lr.predict(self.x_data)
-        print 'lr params', lr.coef_, lr.intercept_
+        self.lr = LinearRegression()
+        self.lr.fit(self.x_data, self.y_data)
+        adjusted_result = self.lr.predict(self.x_data)
+        print 'lr params', self.lr.coef_, self.lr.intercept_
         print 'lr accuracy', get_accuracy(adjusted_result, self.y_data)
         return map(int, list(adjusted_result))
 
@@ -41,9 +42,9 @@ class MyRegression(object):
         return map(int, list(adjusted_result))
 
     def linear_ridge_reg(self):
-        rr = Ridge()
-        rr.fit(self.x_data, self.y_data)
-        adjusted_result = rr.predict(self.x_data)
-        print 'ridge params', rr.coef_, rr.intercept_
+        self.rr = Ridge()
+        self.rr.fit(self.x_data, self.y_data)
+        adjusted_result = self.rr.predict(self.x_data)
+        print 'ridge params', self.rr.coef_, self.rr.intercept_
         print 'ridge accuracy', get_accuracy(adjusted_result, self.y_data)
         return map(int, list(adjusted_result))
