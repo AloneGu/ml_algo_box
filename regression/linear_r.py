@@ -19,8 +19,10 @@ g = np.random.randint(-10,10,size=96)+v
 def ols_linear_reg(x_data,y_data):
     lr = LinearRegression()
     lr.fit(x_data,y_data)
+
     print 'lr params',lr.coef_,lr.intercept_
     adjusted_result = lr.predict(x_data)
+    print x_data,adjusted_result
     return map(int,list(adjusted_result))
 
 def bayes_ridge_reg(x_data,y_data):

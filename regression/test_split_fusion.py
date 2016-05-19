@@ -43,7 +43,7 @@ if __name__ == '__main__':
     #plt.plot(v,color='g',label='video')
     plt.plot(adjust,color='k',label='fusion result')
     plt.title('fusion video and wifi')
-    plt.ylabel('occupancy of location id 120 ')
+    plt.ylabel('walkin of location id 120 ')
     print 'test accuracy',get_accuracy(adjust,y_test)
     video_test = [x[0] for x in X_test]
     print 'train count',len(X_train)

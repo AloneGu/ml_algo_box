@@ -35,3 +35,4 @@ if __name__ == '__main__':
     regression_worker.ols_linear_reg()
     regression_worker.bayes_ridge_reg()
     regression_worker.linear_ridge_reg()
+    print regression_worker.lr.predict([8,21,1])
