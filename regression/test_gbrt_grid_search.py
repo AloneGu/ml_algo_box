@@ -53,7 +53,7 @@ def lr_training(x,y):
     print y[:10]
 
 def gbrt_training_save_res(x,y):
-    t = GradientBoostingRegressor(n_estimators=100,learning_rate=0.1)
+    t = LinearRegression()
     t.fit(x,y)
     p = t.predict(x)
     f = lambda x:max(0,int(x))
