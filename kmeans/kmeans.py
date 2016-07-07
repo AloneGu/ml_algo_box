@@ -1,5 +1,5 @@
 import numpy as np
-from ..util import get_x_y_data
+from util import get_x_y_data
 from sklearn.cluster import KMeans
 
 TEST_DATA_ROWS = 20
