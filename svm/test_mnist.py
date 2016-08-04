@@ -6,6 +6,7 @@ def get_mnist_data():
     import gzip,pickle
     f = gzip.open('../data/mnist.pkl.gz', "rb")
     train, val, test = pickle.load(f)
+    print len(train[0])
     f.close()
     train_x = train[0]
     train_y = train[1]

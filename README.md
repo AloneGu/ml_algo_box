@@ -6,6 +6,7 @@ Some examples of classic machine learning algorithm
 2. scipy 0.17.0
 3. sklearn 0.17
 4. pip install -e 'git+http://github.com/dustinstansbury/stacked_generalization.git#egg=stacked_generalization' ( only for stacked generalization )
+5. pip install xgboost ( seems better than boosting in sklearn )
 
 ## For some visualization, you may have to install
 1. Ipython
