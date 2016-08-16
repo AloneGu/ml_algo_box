@@ -31,6 +31,6 @@ test_result = kmeans.predict(x_test)  # test
 for type, dis in zip(test_result, x_distance):
     print type, dis
 
-from sklearn.cross_validation import cross_val_score
 
-print cross_val_score(kmeans, x_data)
+from sklearn.metrics import silhouette_score
+print silhouette_score(x_data,kmeans.predict(x_data))
