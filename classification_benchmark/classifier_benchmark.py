@@ -7,6 +7,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
+from xgboost import XGBClassifier
 import time
 import numpy as np
 
@@ -18,7 +19,7 @@ class classifier_test(object):
         self.y_data = np.array(y_data)
         self.n_neighbores = n_neighbors
         self.dct_depth = dct_depth
-        _, self.x_test, _, self.y_test = train_test_split(self.x_data, self.y_data, test_size=0.6, random_state=0)
+        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.x_data, self.y_data, test_size=0.4, random_state=233)
 
     def run(self):
         self.dct_test()
@@ -35,40 +36,42 @@ class classifier_test(object):
         print '-----------------------'
         self.gradient_boosting_classifier()
         print '-----------------------'
+        self.xgboost_classifier()
+        print '-----------------------'
 
     def dct_test(self):
         print 'dct test, depth', self.dct_depth
-        start_time = time.time()
         dct_clf = DecisionTreeClassifier(max_depth=self.dct_depth)
         print 'cross validation score',cross_val_score(dct_clf, self.x_data, self.y_data)
-        dct_clf.fit(self.x_data, self.y_data)
+        start_time = time.time()
+        dct_clf.fit(self.x_train, self.y_train)
         print 'score',dct_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
 
     def knn_test(self):
         print 'knn test, n count', self.n_neighbores
-        start_time = time.time()
         knn_clf = KNeighborsClassifier(n_neighbors=self.n_neighbores)
         print 'cross validation score',cross_val_score(knn_clf, self.x_data, self.y_data)
-        knn_clf.fit(self.x_data, self.y_data)
+        start_time = time.time()
+        knn_clf.fit(self.x_train, self.y_train)
         print 'score',knn_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
 
     def svm_test(self):
         print 'svm test'
-        start_time = time.time()
         svm_clf = svm.SVC()
         print 'cross validation score',cross_val_score(svm_clf, self.x_data, self.y_data)
-        svm_clf.fit(self.x_data, self.y_data)
+        start_time = time.time()
+        svm_clf.fit(self.x_train, self.y_train)
         print 'score',svm_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
 
     def gaussian_bayes_test(self):
         print 'gaussian bayes test'
-        start_time = time.time()
         g_bayes_clf = GaussianNB()
         print 'cross validation score',cross_val_score(g_bayes_clf, self.x_data, self.y_data)
-        g_bayes_clf.fit(self.x_data, self.y_data)
+        start_time = time.time()
+        g_bayes_clf.fit(self.x_train, self.y_train)
         print 'score',g_bayes_clf.score(self.x_test, self.y_test)
         print 'time cost', time.time() - start_time
 
@@ -90,6 +93,13 @@ class classifier_test(object):
         model.fit(self.x_data, self.y_data)
         print 'GBDT cross validation score',cross_val_score(model, self.x_data, self.y_data)
 
+    def xgboost_classifier(self):
+        cls = XGBClassifier()
+        print 'xgboost cross validation score', cross_val_score(cls,self.x_data,self.y_data)
+        start_time = time.time()
+        cls.fit(self.x_train, self.y_train)
+        print 'score', cls.score(self.x_test, self.y_test)
+        print 'time cost', time.time() - start_time
 
 def get_wifi_x_y_data():
     bssid_cnt = {}
