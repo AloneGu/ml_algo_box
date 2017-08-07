@@ -14,7 +14,11 @@ Some examples of classic machine learning algorithm
 3. graphviz ( sudo apt-get install graphviz )
 
 ## Environment
-Test on Ubuntu 14
+Test on Ubuntu
+
+## Updates
+
+some new scripts are using python3 (2017.08.07)
 
 
 
