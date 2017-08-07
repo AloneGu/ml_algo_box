@@ -42,7 +42,7 @@ class MyKnn(object):
         curr_x = np.array(x)
         for i in range(self.data_cnt):
             diff_vec = curr_x - self.x_data[i]
-            if diff_vec.min() == -1: # less word , not allowed
+            if diff_vec.min() < 0 : # less word , not allowed
                 continue
             else:
                 distance = diff_vec.sum()
