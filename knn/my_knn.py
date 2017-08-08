@@ -67,4 +67,4 @@ if __name__ == '__main__':
     ]
     t.fit(x,y)
     print(t.predict(x)) # should be [(1,0),(2,0),(3,0)]
-    print(t.predict(test_x)) # shoud be [(1,100),(1,1),(3,0),(1,100)]
+    print(t.predict(test_x)) # should be [(1,100),(1,1),(3,0),(1,100)]
